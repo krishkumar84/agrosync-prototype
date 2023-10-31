@@ -30,7 +30,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="w-full bg-transparent px-10 sm:px-12 flex justify-between items-center py-2  z-100">
+    <nav className="w-full bg-transparent px-0 sm:px-12 flex justify-between items-center py-2  z-100">
       <div className="mr-2 ml-2">
         <FiverrLogo fillColor="#404145" />
       </div>
