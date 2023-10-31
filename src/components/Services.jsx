@@ -7,11 +7,11 @@ function Services() {
 //   const router = useRouter();
 
   return (
-    <div className="mx-20 my-16 ">
+    <div className="sm:mx-20 mx-8  my-16 ">
       <h2 className="text-4xl mb-10 text-[#404145] font-bold ">
         You need it, we&apos;ve got it
       </h2>
-      <ul className="grid grid-cols-5 gap-10">
+      <ul className="grid  grid-cols-2 sm:grid-cols-5 sm:gap-10 gap-1 ">
         {categories.map(({ name, logo }) => {
           return (
             <li

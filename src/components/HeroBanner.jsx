@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import bgHero from '../assets/bg-hero1.webp';
-import bgHero2 from '../assets/bg-hero2.webp';
-import bgHero3 from '../assets/bg-hero3.webp';
-import bgHero4 from '../assets/bg-hero4.webp';
-import bgHero5 from '../assets/bg-hero5.webp';
-import bgHero6 from '../assets/bg-hero6.webp';
+import bgHero from '../assets/Component1.png';
+import bgHero2 from '../assets/Component2.png';
+import bgHero3 from '../assets/Component3.png';
+import bgHero4 from '../assets/Component4.png';
+import bgHero5 from '../assets/Component5.png';
+import bgHero6 from '../assets/Component6.png';
 
 const imageSources = [
   bgHero,
@@ -34,8 +34,8 @@ function HomeBanner() {
   }, []);
 
   return (
-    <div className="h-[540px] relative bg-cover">
-      <div className="absolute top-0 right-0 w-[110vw] h-full transition-opacity z-0">
+    <div className="sm:h-[540px] h-[440px]  bg-green-600 sm:bg-white relative bg-cover">
+      <div className="absolute hidden sm:block top-0 right-0 w-[110vw] h-full transition-opacity z-0">
         <img
           alt="hero"
           src={imageSources[imageIndex]}
@@ -43,45 +43,45 @@ function HomeBanner() {
         />
       </div>
       
-      <div className="z-10 relative w-[650px] flex justify-center flex-col h-full gap-5 ml-16">
-        <h1 className="text-white text-5xl leading-snug">
+      <div className="z-10 relative w-[400px] sm:w-[650px] flex justify-center flex-col h-full gap-5 pl-12 sm:ml-16">
+        <h1 className="text-white sm:text-5xl text-5xl leading-snug">
           Find the perfect&nbsp;
-          <i>freelance</i>
+          <i>CROP</i>
           <br />
-          services for your business
+           for your business
         </h1>
         <div className="flex align-middle">
           <div className="relative">
             <IoSearchOutline className="absolute text-gray-500 text-2xl flex align-middle h-full left-2" />
             <input
               type="text"
-              className="h-14 w-[450px] pl-10 rounded-md rounded-r-none"
-              placeholder={`Try "building mobile app"`}
+              className="h-14 sm:w-[450px] w-[240px] pl-10 rounded-md rounded-r-none"
+              placeholder={`Try "Finding any crop"`}
               value={searchData}
               onChange={(e) => setSearchData(e.target.value)}
             />
           </div>
           <button
-            className="bg-[#1DBF73] text-white px-12 text-lg font-semibold rounded-r-md"
+            className="bg-[#1DBF73] text-white  px-4 sm:px-12 text-lg font-semibold rounded-r-md"
             onClick={() => alert(`Search: ${searchData}`)} // Replace with your search functionality
           >
             Search
           </button>
         </div>
-        <div className="text-white flex gap-4">
+        <div className="text-white hidden sm:block flex gap-4">
           Popular:
-          <ul className="flex gap-5">
-            <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-              Website Design
+          <ul className="flex pt-2 gap-5">
+            <li className="text-sm py-1  px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
+              Wheat
             </li>
             <li className="text-sm py-1 px-3 border rounded-full hover.bg-white hover.text-black transition-all duration-300 cursor-pointer">
-              Wordpress
+              Rice
             </li>
             <li className="text-sm py-1 px-3 border rounded-full hover.bg-white hover.text-black transition-all duration-300 cursor-pointer">
-              Logo Design
+              Maize
             </li>
             <li className="text-sm py-1 px-3 border rounded-full hover.bg-white hover.text-black transition-all duration-300 cursor-pointer">
-              AI Services
+              SugarCane
             </li>
           </ul>
         </div>

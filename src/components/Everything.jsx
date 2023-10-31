@@ -26,7 +26,7 @@ function Everything() {
     },
   ];
   return (
-    <div className="bg-[#f1fdf7] flex py-20 justify-between px-24">
+    <div className="bg-[#f1fdf7] flex flex-wrap pt-20 justify-between px-12 sm:px-24">
       <div>
         <h2 className="text-4xl mb-5 text-[#404145] font-bold">
           The best part? Everything.
@@ -45,8 +45,8 @@ function Everything() {
           })}
         </ul>
       </div>
-      <div className="relative h-96 w-2/4">
-        <img src={webp} fill alt="everything" />
+      <div className="relative h-44 w-full mt-16 sm:w-5/12">
+        <img src={webp} className="rounded-md" fill alt="everything" />
       </div>
     </div>
   );

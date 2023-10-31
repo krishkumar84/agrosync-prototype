@@ -6,7 +6,7 @@ import business1 from "../assets/business.webp"
 
 function FiverrBusiness() {
   return (
-    <div className="bg-[#0d084d] px-20 py-16 flex gap-10">
+    <div className="bg-[#0d084d] sm:px-12 px-10 flex-wrap pt-16 flex gap-8">
       <div className="text-white flex flex-col gap-6 justify-center items-start">
         <div className="flex gap-2">
           <FiverrLogo fillColor={"#ffffff"} />
@@ -42,7 +42,7 @@ function FiverrBusiness() {
           Explore Fiverr Business
         </button>
       </div>
-      <div className="relative  pt-28 h-[512px] w-2/3">
+      <div className="relative  pt-28 h-[512px]  w-full sm:w-1/3">
         <img src={business1} alt="bsiness" fill />
       </div>
     </div>

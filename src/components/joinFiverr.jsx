@@ -3,9 +3,9 @@ import React from "react";
 
 function JoinFiverr() {
   return (
-    <div className="mx-16 my-16 relative">
+    <div className="sm:mx-16 mx-8 rounded-md my-16 bg-red-950 relative">
       <div className="absolute z-10 top-1/3 left-10">
-        <h4 className="text-white text-5xl mb-10">
+        <h4 className="text-white text-4xl  sm:text-5xl mb-10">
           Suddenly it&apos;s all so <i>doable.</i>
         </h4>
         <button
@@ -15,8 +15,8 @@ function JoinFiverr() {
           Join Fiverr
         </button>
       </div>
-      <div className=" w-full h-96">
-        <img src={join1} fill alt="signup" className="rounded-sm" />
+      <div className="  w-full h-80">
+        <img src={join1} fill alt="signup" className="hidden sm:block rounded-sm" />
       </div>
     </div>
   );

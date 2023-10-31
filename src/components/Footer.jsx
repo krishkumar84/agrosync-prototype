@@ -37,10 +37,13 @@ function Footer() {
     {
       headerName: "Categories",
       links: [
-        ...categories.map(({ name }) => ({
-          name,
-          link: `/search?category=${name}`,
-        })),
+        { name: "Careers", link: "#" },
+        { name: "Press & News", link: "#" },
+        { name: "Partnership", link: "#" },
+        { name: "Privacy Policy", link: "#" },
+        { name: "Terms of Service", link: "#" },
+        { name: "Intellectual Property ", link: "#" },
+        { name: "Investor Relations", link: "#" },
       ],
     },
     {
@@ -51,7 +54,7 @@ function Footer() {
         { name: "Partnership", link: "#" },
         { name: "Privacy Policy", link: "#" },
         { name: "Terms of Service", link: "#" },
-        { name: "Intellectual Property Claims", link: "#" },
+        { name: "Intellectual Property ", link: "#" },
         { name: "Investor Relations", link: "#" },
       ],
     },
@@ -64,40 +67,9 @@ function Footer() {
         { name: "Buying on Fiverr", link: "#" },
       ],
     },
-    {
-      headerName: "Community",
-      links: [
-        { name: "Community Success Stories", link: "#" },
-        { name: "Community Hub", link: "#" },
-        { name: "Forum", link: "#" },
-        { name: "Events", link: "#" },
-        { name: "Blog", link: "#" },
-        { name: "Influencers", link: "#" },
-        { name: "Affiliates", link: "#" },
-        { name: "Podcast", link: "#" },
-        { name: "Invite a Friend", link: "#" },
-        { name: "Become a Seller", link: "#" },
-        { name: "Community Standards", link: "#" },
-      ],
-    },
-    {
-      headerName: "Move From Fiverr",
-      links: [
-        { name: "Fiverr Business", link: "#" },
-        { name: "Fiverr Pro", link: "#" },
-        { name: "Fiverr Logo Maker", link: "#" },
-        { name: "Fiverr Guides", link: "#" },
-        { name: "Get Inspired", link: "#" },
-        { name: "Fiverr Select", link: "#" },
-        { name: "ClearVoice", link: "#" },
-        { name: "Fiverr Workspace", link: "#" },
-        { name: "Learn", link: "#" },
-        { name: "Working Not Working", link: "#" },
-      ],
-    },
   ];
   return (
-    <footer className="w-full  mx-auto px-32 py-16 h-max border-t border-gray-200 bg-gray-100">
+    <footer className="w-full  mx-auto  px-8 sm:px-32 py-16 h-max border-t border-gray-200 bg-gray-100">
       <ul className="flex justify-between">
         {data.map(({ headerName, links }) => {
           return (

@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 function PopularServices() {
   const popularServicesData = [
     { name: "Ai Artists", label: "Add talent to AI", image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/7ead3b2056987e6fa3aad69cf897a50b-1690383161247/ai-artists-2x.png' },
@@ -13,18 +15,18 @@ function PopularServices() {
   ];
 
   return (
-    <div className="mx-20 my-16">
+    <div className=" ml-16 sm:ml-20 my-16">
       <h2 className="text-4xl mb-5 text-gray-400 font-bold">
         Popular Services
       </h2>
       <ul className="flex flex-wrap gap-5">
         {popularServicesData.map(({ name, label, image }) => (
-          <li key={name} className="relative cursor-pointer">
+          <li key={name} className="relative  cursor-pointer">
             <div className="absolute z-10 text-white left-5 top-4">
               <span>{label}</span>
               <h6 className="font-extrabold text-2xl">{name}</h6>
             </div>
-            <div className="h-80 mb-8 w-64">
+            <div className="h-80  sm:mb-8 mb-32 w-80 sm:w-64">
               <img src={image} alt="service" />
             </div>
           </li>

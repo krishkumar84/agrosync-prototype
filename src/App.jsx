@@ -3,7 +3,6 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import HomeBanner from './components/HeroBanner'
-import Companies from './components/Companies'
 import PopularServices from './components/PopularServices'
 import Everything from './components/Everything'
 import Services from './components/Services'
@@ -18,8 +17,7 @@ function App() {
   return (
     <>
      <Navbar/>
-     <HomeBanner/>
-     <Companies/>
+     <HomeBanner/> 
      <PopularServices/>
      <Everything/>
      <Services/>
