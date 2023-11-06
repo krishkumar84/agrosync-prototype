@@ -7,7 +7,7 @@ function Services() {
 //   const router = useRouter();
 
   return (
-    <div className="sm:mx-20 mx-8  my-16 ">
+    <div className="sm:mx-20 mx-8 my-16 ">
       <h2 className="text-4xl mb-10 text-[#404145] font-bold ">
         You need it, we&apos;ve got it
       </h2>

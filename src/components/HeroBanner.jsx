@@ -43,7 +43,7 @@ function HomeBanner() {
         />
       </div>
       
-      <div className="z-10 relative w-[400px] sm:w-[650px] flex justify-center flex-col h-full gap-5 pl-12 sm:ml-16">
+      <div className="z-10 relative w-[400px] sm:w-[650px] flex pt-24 justify-center flex-col h-full gap-5 pl-12 sm:ml-16">
         <h1 className="text-white sm:text-5xl text-5xl leading-snug">
           Find the perfect&nbsp;
           <i>CROP</i>
