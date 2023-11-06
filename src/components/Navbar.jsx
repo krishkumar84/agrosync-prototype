@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSpring, animated } from 'react-spring';
 import FiverrLogo from "../FiverrLogo";
 import { IoSearchOutline } from "react-icons/io5";
 const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
@@ -7,6 +8,23 @@ const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/
 function Navbar() {
   const [searchData, setSearchData] = useState("");
   const [isContextMenuVisible, setIsContextMenuVisible] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 40) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleSearch = () => {
     // Handle search logic
@@ -29,8 +47,14 @@ function Navbar() {
     },
   ];
 
+  const bgColorSpring = useSpring({
+    backgroundColor: scrolling ? 'white' : 'transparent',
+  });
+
+  const navbarClass = `w-full fixed mt-3 px-0 sm:px-12 flex justify-between items-center py-2 z-20`;
+
   return (
-    <nav className="w-full bg-transparent px-0 sm:px-12 flex justify-between items-center py-2  z-100">
+    <animated.nav className={navbarClass} style={bgColorSpring}>
       <div className="mr-2 ml-2">
         <FiverrLogo fillColor="#404145" />
       </div>
@@ -71,7 +95,7 @@ function Navbar() {
           />
         </li>
       </ul>
-    </nav>
+    </animated.nav>
   );
 }
 

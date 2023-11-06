@@ -23,7 +23,7 @@ function HomeBanner() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFadeClass("image-transition-fadeout");
+      setFadeClass("image-transition-fadeout ");
       setTimeout(() => {
         setImageIndex((prevIndex) => (prevIndex >= imageSources.length - 1 ? 0 : prevIndex + 1));
         setFadeClass("image-transition-fadein");
@@ -34,16 +34,16 @@ function HomeBanner() {
   }, []);
 
   return (
-    <div className="sm:h-[540px] h-[440px]  bg-green-600 sm:bg-white relative bg-cover">
-      <div className="absolute hidden sm:block top-0 right-0 w-[110vw] h-full transition-opacity z-0">
+    <div className="sm:h-[540px] h-[440px] -m-3  z-10 bg-green-600 sm:bg-white relative bg-cover">
+      <div className="absolute hidden sm:block top-0 right-0 w-[110vw] h-[800px] transition-opacity z-0">
         <img
           alt="hero"
           src={imageSources[imageIndex]}
-          className={fadeClass}
+         className={`${fadeClass}`}
         />
       </div>
       
-      <div className="z-10 relative w-[400px] sm:w-[650px] flex pt-24 justify-center flex-col h-full gap-5 pl-12 sm:ml-16">
+      <div className="z-10 relative w-[400px] sm:w-[650px] flex pt-24 justify-center flex-col h-full gap-5 pl-12 sm:ml-4">
         <h1 className="text-white sm:text-5xl text-5xl leading-snug">
           Find the perfect&nbsp;
           <i>CROP</i>
