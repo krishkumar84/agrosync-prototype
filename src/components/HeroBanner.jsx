@@ -34,7 +34,7 @@ function HomeBanner() {
   }, []);
 
   return (
-    <div className="sm:h-[540px] h-[440px] -m-3  z-10 bg-green-600 sm:bg-white relative bg-cover">
+    <div className="sm:h-[540px] h-[480px] -m-3  z-10 bg-green-600 sm:bg-white relative bg-cover">
       <div className="absolute hidden sm:block top-0 right-0 w-[110vw] h-[800px] transition-opacity z-0">
         <img
           alt="hero"
@@ -68,7 +68,7 @@ function HomeBanner() {
             Search
           </button>
         </div>
-        <div className="text-white hidden sm:block flex gap-4">
+        <div className="text-white hidden sm:flex  gap-4">
           Popular:
           <ul className="flex pt-2 gap-5">
             <li className="text-sm py-1  px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">

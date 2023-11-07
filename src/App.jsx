@@ -6,8 +6,8 @@ import HomeBanner from './components/HeroBanner'
 import PopularServices from './components/PopularServices'
 import Everything from './components/Everything'
 import Services from './components/Services'
-import FiverrBusiness from './components/FiverrBusiness'
-import JoinFiverr from './components/joinFiverr'
+import AgroBusiness from './components/AgroBusiness'
+import JoinAgro from './components/joinAgro'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 
@@ -21,8 +21,8 @@ function App() {
      <PopularServices/>
      <Everything/>
      <Services/>
-     <FiverrBusiness/>
-     <JoinFiverr/>
+     <AgroBusiness/>
+     <JoinAgro/>
      <Footer/>
      
     </>

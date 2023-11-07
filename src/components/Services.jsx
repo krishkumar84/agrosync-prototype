@@ -1,6 +1,6 @@
 import { categories } from "../utils/categories";
 
-// import { useRouter } from "next/router";
+
 import React from "react";
 
 function Services() {
@@ -17,7 +17,7 @@ function Services() {
             <li
               key={name}
               className="flex flex-col justify-center items-center cursor-pointer hover:shadow-2xl hover:border-[#1DBF73]  border-2 border-transparent p-5 transition-all duration-500"
-            //   onClick={() => router.push(`/search?category=${name}`)}
+            
             >
               <img src={logo} alt="category" height={50} width={50} />
               <span>{name}</span>

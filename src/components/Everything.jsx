@@ -5,19 +5,19 @@ import webp from '../assets/everything.webp';
 function Everything() {
   const everythingData = [
     {
-      title: "Stick to your budget",
+      title: "Budget-Friendly Solutions: ",
       subtitle:
-        "Find the right service for every price point. No hourly rates, just project-based pricing.",
+        "Stick to your budget with service options for every price point.",
     },
     {
-      title: "Get quality work done quickly",
+      title: "Swift and Quality Results:",
       subtitle:
         "Hand your project over to a talented freelancer in minutes, get long-lasting results.",
     },
     {
-      title: "Pay when you're happy",
+      title: "Payment Assurance: ",
       subtitle:
-        "Upfront quotes mean no surprises. Payments only get released when you approve.",
+        "Trust your harvest to our dedicated farmers, and the delivery of high-quality crops",
     },
     {
       title: "Count on 24/7 support",
@@ -29,7 +29,7 @@ function Everything() {
     <div className="bg-[#f1fdf7] sm:pb-24 pb-44 flex flex-wrap pt-20 justify-between px-12 sm:px-24">
       <div>
         <h2 className="text-4xl mb-5 text-[#404145] font-bold">
-          The best part? Everything.
+        The Best Part: Agro Sync Experience
         </h2>
         <ul className="flex flex-col gap-10">
           {everythingData.map(({ title, subtitle }) => {

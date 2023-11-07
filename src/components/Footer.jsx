@@ -1,4 +1,5 @@
 import React from "react";
+import AgroLogo from "../assets/AgroSync.png";
 import {
   FiGithub,
   FiInstagram,
@@ -6,7 +7,6 @@ import {
   FiLinkedin,
   FiTwitter,
 } from "react-icons/fi";
-import FiverrLogo from "../FiverrLogo";
 import { categories } from "../utils/categories";
 
 function Footer() {
@@ -15,22 +15,22 @@ function Footer() {
     {
       name: "Youtube",
       icon: <FiYoutube />,
-      link: "https://www.youtube.com/KishanSheth21/",
+      link: "#",
     },
     {
       name: "LinkedIn",
       icon: <FiLinkedin />,
-      link: "https://www.linkedin.com/in/koolkishan/",
+      link: "#",
     },
     {
       name: "Instagram",
       icon: <FiInstagram />,
-      link: "https://instagram.com/koolkishansheth",
+      link: "#",
     },
     {
       name: "Twitter",
       icon: <FiTwitter />,
-      link: "https://twitter.com/koolkishansheth",
+      link: "#",
     },
   ];
   const data = [
@@ -63,8 +63,8 @@ function Footer() {
       links: [
         { name: "Help & Support", link: "#" },
         { name: "Trust & Safety", link: "#" },
-        { name: "Selling on Fiverr", link: "#" },
-        { name: "Buying on Fiverr", link: "#" },
+        { name: "Selling ", link: "#" },
+        { name: "Buying ", link: "#" },
       ],
     },
   ];
@@ -87,7 +87,9 @@ function Footer() {
         })}
       </ul>
       <div className="mt-12 flex items-center justify-between">
-        <FiverrLogo fillColor={"#404145"} />
+      <div className="mr-2 mt-2 pl-2 w-[140px] ml-40 sm:ml-0 ">
+        <img src= {AgroLogo}  />
+      </div>
         <ul className="flex gap-5">
           {socialLinks.map(({ icon, link, name }) => (
             <li

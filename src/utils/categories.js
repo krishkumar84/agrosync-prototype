@@ -10,14 +10,14 @@ import service9 from '../assets/service-9.svg';
 import service10 from '../assets/service-10.svg';
 
 export const categories = [
-  { name: "Graphic Design", logo: service1 },
-  { name: "Digital Marketing", logo: service2 },
-  { name: "Writing & Translation", logo: service3 },
-  { name: "Video & Animation", logo: service4 },
-  { name: "Music & Audio", logo: service5 },
-  { name: "Programming & Tech", logo: service6 },
+  { name: "Crop Listings", logo: service1 },
+  { name: "Marketplace ", logo: service2 },
+  { name: "Farm Management", logo: service3 },
+  { name: "Product Videos", logo: service4 },
+  { name: "Farm ", logo: service5 },
+  { name: " Assistance", logo: service6 },
   { name: "Business", logo: service7 },
-  { name: "Lifestyle", logo: service8 },
-  { name: "Data", logo: service9 },
-  { name: "Photography", logo: service10 },
+  { name: "Lifestyle Resources", logo: service8 },
+  { name: "Data Insights", logo: service9 },
+  { name: "Farm Photography", logo: service10 },
 ];
