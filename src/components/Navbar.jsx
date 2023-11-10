@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from 'react-spring';
-import AgroLogo from "../assets/AgroSync.png";
 import { IoSearchOutline } from "react-icons/io5";
-const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
+import AgroLogo from "../assets/AgroSync.png";
 
 
 function Navbar() {
   const [searchData, setSearchData] = useState("");
-  const [isContextMenuVisible, setIsContextMenuVisible] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const [bgColorScrolling, setBgColorScrolling] = useState(false);
+  const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
+
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 40) {
+      const scrolled = window.scrollY;
+
+      if (scrolled >= 340) {
         setScrolling(true);
+      } else if (scrolled >= 40) {
+        setBgColorScrolling(true);
       } else {
         setScrolling(false);
+        setBgColorScrolling(false);
       }
     };
 
@@ -29,54 +35,54 @@ function Navbar() {
   const handleSearch = () => {
     // Handle search logic
   };
-
-  const ContextMenuData = [
-    {
-      name: "Profile",
-      callback: () => {
-        // Handle profile navigation
-        setIsContextMenuVisible(false);
-      },
-    },
-    {
-      name: "Logout",
-      callback: () => {
-        // Handle logout logic
-        setIsContextMenuVisible(false);
-      },
-    },
-  ];
+ 
 
   const bgColorSpring = useSpring({
-    backgroundColor: scrolling ? 'white' : 'transparent',
+    backgroundColor: bgColorScrolling ? 'white' : 'transparent',
   });
 
-  const navbarClass = `w-full fixed mt-3 px-0 sm:pr-4  flex justify-between items-center py-2 z-20`;
+  const [searchAnimation, setSearchAnimation] = useSpring(() => ({
+    opacity: scrolling ? 1 : 0,
+    transform: `translateY(${scrolling ? 0 : -20}px)`,
+  }));
+
+  useEffect(() => {
+    setSearchAnimation({
+      opacity: scrolling ? 1 : 0,
+      transform: `translateY(${scrolling ? 0 : -20}px)`,
+    });
+  }, [scrolling]);
 
   return (
-    <animated.nav className={navbarClass} style={bgColorSpring}>
-
-      <div className="mr-2 mt-2 pl-2 w-[500px] ml-40 sm:ml-0 ">
-        <img src= {AgroLogo}  />
+    <animated.nav className="w-full fixed mt-3 px-0 sm:pr-4 flex justify-between items-center py-2 z-20" style={bgColorSpring}>
+      <div className="mr-2 ml-32 sm:ml-12  mt-2  w-[150px] sm:w-[500px]  ">
+        <img src={AgroLogo} alt="AgroSync Logo" />
       </div>
-      
-      <div className="flex ">
-        <input
+      <div className=" hidden sm:flex">
+        <animated.input
           type="text"
           placeholder="What crop are you looking for today?"
-          className="sm:w-[28rem] w-[10rem] hidden sm:block py-2.5 sm:px-5 px-5 ml-3 border"
+          className="sm:w-[28rem] w-[10rem] py-2.5 sm:px-5 px-5 ml-3 border"
           value={searchData}
           onChange={(e) => setSearchData(e.target.value)}
+          style={{
+            ...searchAnimation,
+            visibility: scrolling ? 'visible' : 'hidden',
+          }}
         />
-        <button
-          className="bg-gray-900 py-1.5 hidden sm:flex text-white w-16  justify-center items-center"
+        <animated.button
+          className="bg-gray-900 py-1.5 pr-2 sm:flex text-white w-16 justify-center items-center"
           onClick={handleSearch}
+          style={{
+            ...searchAnimation,
+            visibility: scrolling ? 'visible' : 'hidden',
+          }}
         >
           <IoSearchOutline className="fill-white text-white ml-4 h-6 w-6" />
-        </button>
+        </animated.button>
       </div>
-      <ul className=" sm:ml-28 ml-2 w-full gap-2 sm:gap-10 hidden sm:flex items-center">
-        <li className="cursor-pointer  text-[#1DBF73] font-medium">
+      <ul className="sm:ml-8 ml-2 w-full xl:ml-20 2xl:ml-72 gap-2 sm:gap-10 hidden sm:flex items-center">
+        <li className="cursor-pointer text-[#1DBF73] font-medium">
           Create Post
         </li>
         <li className="cursor-pointer text-[#1DBF73] font-medium">Orders</li>
@@ -93,11 +99,13 @@ function Navbar() {
             alt="Profile"
             width={40}
             height={40}
-            className="rounded-full"
+            className="rounded-full "
           />
         </li>
       </ul>
     </animated.nav>
+
+    
   );
 }
 

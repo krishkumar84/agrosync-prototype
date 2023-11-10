@@ -63,7 +63,7 @@ function HomeBanner() {
           </div>
           <button
             className="bg-[#1DBF73] text-white  px-4 sm:px-12 text-lg font-semibold rounded-r-md"
-            onClick={() => alert(`Search: ${searchData}`)} // Replace with your search functionality
+            onClick={() => alert(`Search: ${searchData}`)} 
           >
             Search
           </button>

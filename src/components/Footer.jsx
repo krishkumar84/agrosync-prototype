@@ -87,7 +87,7 @@ function Footer() {
         })}
       </ul>
       <div className="mt-12 flex items-center justify-between">
-      <div className="mr-2 mt-2 pl-2 w-[140px] ml-40 sm:ml-0 ">
+      <div className="mr-2 mt-2 pl-2 w-[140px] ml-0 ">
         <img src= {AgroLogo}  />
       </div>
         <ul className="flex gap-5">

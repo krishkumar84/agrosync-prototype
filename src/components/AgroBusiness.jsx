@@ -9,7 +9,7 @@ function AgroBusiness() {
     <div className="bg-[#0d084d] sm:px-12 px-10 flex-wrap pt-16 flex gap-8">
       <div className="text-white flex flex-col gap-6 justify-center items-start">
         <div className="flex gap-2">
-        <div className="mr-2 mt-2 pl-2 w-[160px] ml-40 sm:ml-0 ">
+        <div className="mr-2 mt-2 pl-2 w-[160px] ml-0 ">
         <img src= {AgroLogo}  />
       </div>
           <span className="text-white text-3xl  font-bold">Business</span>

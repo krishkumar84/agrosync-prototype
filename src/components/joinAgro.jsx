@@ -3,7 +3,7 @@ import React from "react";
 
 function JoinAgro() {
   return (
-    <div className="sm:mx-16 mx-8 rounded-md my-16 bg-red-950 relative">
+    <div className="sm:mx-16 mx-4 rounded-md my-16 bg-red-950 relative">
       <div className="absolute z-10 top-1/3 left-10">
         <h4 className="text-white text-4xl  sm:text-5xl mb-10">
           Suddenly it&apos;s all so <i>doable.</i>
