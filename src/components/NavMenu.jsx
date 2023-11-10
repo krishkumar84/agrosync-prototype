@@ -45,7 +45,7 @@ function NavMenu() {
 
   return (
     <div>
-      <div className="fixed mt-7 z-40  sm:hidden ">
+      <div className="fixed mt-3 z-40  sm:hidden ">
         <button
           onClick={handleButtonClick}
           className="dark-icon ml-8 mr-24 "
@@ -55,9 +55,9 @@ function NavMenu() {
         <animated.div style={bgColorSpring} className={`${isDivVisible ? "nav2" : "hidden"}`}>
             <div className="">
         <ul className="sm:ml-8 ml-2 w-full py-8 items-center">
-        <li className="cursor-pointer py-3 font-medium">Create Post</li>
-        <li className="cursor-pointer py-3 font-medium">Orders</li>
-        <li className="cursor-pointer py-3 font-medium" onClick={() => {}}>
+        <li className="cursor-pointer py-5 text-3xl">Create Post</li>
+        <li className="cursor-pointer py-5 text-3xl">Orders</li>
+        <li className="cursor-pointer py-5 text-3xl" onClick={() => {}}>
           Switch To Buyer
         </li>
         <li

@@ -18,10 +18,11 @@
 .nav2 {
   top: 0;
   left: 0;
-  height: 700px;
-  margin-top: -690px;
-  width: 260px;
+  height: 1100px;
+  margin-top: -1090px;
+  width: 360px;
   padding: 50px;
+  padding-top: 200px;
   gap: 50px;
 
  

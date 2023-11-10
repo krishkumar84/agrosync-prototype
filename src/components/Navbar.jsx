@@ -54,7 +54,7 @@ function Navbar() {
   }, [scrolling]);
 
   return (
-    <animated.nav className="w-full fixed mt-3 px-0 sm:pr-4 flex justify-between items-center py-2 z-20" style={bgColorSpring}>
+    <animated.nav className="w-full fixed  px-0 sm:pr-4 flex justify-between items-center py-2 z-20" style={bgColorSpring}>
       <div className="mr-2 ml-32 sm:ml-12  mt-2  w-[150px] sm:w-[500px]  ">
         <img src={AgroLogo} alt="AgroSync Logo" />
       </div>
