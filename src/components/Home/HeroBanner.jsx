@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import bgHero from '../assets/Component1.png';
+import bgHero  from '../assets/Component1.png';
 import bgHero2 from '../assets/Component2.png';
 import bgHero3 from '../assets/Component3.png';
 import bgHero4 from '../assets/Component4.png';

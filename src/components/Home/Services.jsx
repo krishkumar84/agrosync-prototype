@@ -1,4 +1,4 @@
-import { categories } from "../utils/categories";
+import { categories } from "../../utils/categories";
 
 
 import React from "react";

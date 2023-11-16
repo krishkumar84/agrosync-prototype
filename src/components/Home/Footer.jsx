@@ -7,7 +7,7 @@ import {
   FiLinkedin,
   FiTwitter,
 } from "react-icons/fi";
-import { categories } from "../utils/categories";
+import { categories } from "../../utils/categories";
 
 function Footer() {
   const socialLinks = [

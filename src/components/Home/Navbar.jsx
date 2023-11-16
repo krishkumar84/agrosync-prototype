@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from 'react-spring';
 import { IoSearchOutline } from "react-icons/io5";
 import AgroLogo from "../assets/AgroSync.png";
+import { Link } from "react-router-dom";
 
 
 function Navbar() {
   const [searchData, setSearchData] = useState("");
   const [scrolling, setScrolling] = useState(false);
+  const [Open, setOpen] = useState(false);
   const [bgColorScrolling, setBgColorScrolling] = useState(false);
   const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
+  const currentuser = {
+    id: 1,
+    username: "krish",
+    isSeller:  true
+  }
 
 
   useEffect(() => {
@@ -56,7 +63,9 @@ function Navbar() {
   return (
     <animated.nav className="w-full fixed  px-0 sm:pr-4 flex justify-between items-center py-2 z-20" style={bgColorSpring}>
       <div className="mr-2 ml-32 sm:ml-12  mt-2  w-[150px] sm:w-[500px]  ">
+        <Link to="/">
         <img src={AgroLogo} alt="AgroSync Logo" />
+        </Link>
       </div>
       <div className=" hidden sm:flex">
         <animated.input
@@ -81,27 +90,43 @@ function Navbar() {
           <IoSearchOutline className="fill-white text-white ml-4 h-6 w-6" />
         </animated.button>
       </div>
-      <ul className="sm:ml-8 ml-2 w-full xl:ml-20 2xl:ml-72 gap-2 sm:gap-10 hidden sm:flex items-center">
-        <li className="cursor-pointer text-[#1DBF73] font-medium">
-          Create Post
-        </li>
-        <li className="cursor-pointer text-[#1DBF73] font-medium">Orders</li>
-        <li className="cursor-pointer font-medium" onClick={() => {}}>
-          Switch To Buyer
-        </li>
-        <li
+      <ul className="sm:ml-16 ml-2 w-full xl:ml-20 2xl:ml-72 gap-2 sm:gap-10 hidden sm:flex items-center">
+        {!currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
+          Become a Seller
+        </li>}
+        {!currentuser?.isSeller && <li className="cursor-pointer  text-gray-600 hover:text-[#1DBF73] font-medium">Sign in </li>}
+        {!currentuser?.isSeller && <li className="cursor-pointer font-medium" onClick={() => {}}>
+          <button className="border hover:border-green-700 rounded-md hover:bg-green-600 px-5 py-1.5 text-green-500 hover:text-white">Join</button>
+        </li>}
+        {currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">Orders </li>}
+        {currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
+          switch to selling
+        </li>}
+        <div className="flex center gap-3 ">
+        {currentuser?.isSeller && <li
           className="cursor-pointer "
-          onClick={() => setIsContextMenuVisible(true)}
           title="Profile"
         >
           <img
+            onClick={() => setOpen(!Open)}
             src={commonImageUrl}
             alt="Profile"
             width={40}
             height={40}
             className="rounded-full "
           />
-        </li>
+          {Open && <div className="absolute top-12 w-32 bg-white mt-3 flex flex-col p-4 gap-1.5 text-gray-700  cursor-pointe font-medium rounded-md">
+            {currentuser?.isSeller && (
+              <>
+             <Link  to="/post"> <span>Post</span></Link>
+             <Link  to="/newpost"> <span>Add New</span></Link>
+              </>
+              )}
+              <Link  to="/orders"> <span>Orders</span> </Link>
+              <Link  to="/logout"> <span>logout</span> </Link>
+          </div>}
+          </li>}
+          </div>
       </ul>
     </animated.nav>
 

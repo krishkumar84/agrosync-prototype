@@ -1,29 +1,53 @@
 import { useState } from 'react'
 import './App.css'
-import HomeBanner from './components/HeroBanner'
-import PopularServices from './components/PopularServices'
-import Everything from './components/Everything'
-import Services from './components/Services'
-import AgroBusiness from './components/AgroBusiness'
-import JoinAgro from './components/joinAgro'
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
-import NavMenu from './components/NavMenu'
+import Home from './components/Home/Home'
+
+import Footer from './components/Home/Footer'
+import Navbar from './components/Home/Navbar'
+import Posts from './components/Posts/Posts'
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet
+} from "react-router-dom";
+
+
+const Layout = () => {
+  return(
+    <div className='app'>
+    <Navbar/>
+    <Outlet/>
+    <Footer/> 
+    </div> 
+  )
+}
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout/>,
+    children: [ {
+      path: "/",
+      element: <Home/>
+    },
+    {
+      path: "/post",
+      element: <Posts/>
+    }]
+  },
+]);
+
 
 function App() {
 
 
   return (
     <>
-      <Navbar/>  
-     <NavMenu/>
-     <HomeBanner/> 
-     <PopularServices/>
-     <Everything/>
-     <Services/>
-     <AgroBusiness/>
-     <JoinAgro/>
-     <Footer/>
+      {/* <Navbar/>  
+     
+     <Footer/> */}
+      <RouterProvider router={router} />
      
     </>
   )
