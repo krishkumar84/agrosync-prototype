@@ -15,7 +15,7 @@ function MyPost() {
             <div className="flex fle justify-between">
               <h1 className="text-3xl mb-5 font-bold">{currentUser.isSeller ? "Gigs" : "Orders"}</h1>
               {currentUser.isSeller && (
-                <Link to="/add">
+                <Link to="/addpost">
                   <button className='bg-green-500 text-white font-medium rounded-md mb-5 border-none p-3 cursor-pointer'>Add New Gig</button>
                 </Link>
               )}
