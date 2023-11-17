@@ -1,5 +1,5 @@
 import React from 'react'
-import Slider from 'infinite-react-carousel';
+// import Slider from 'infinite-react-carousel';
 import star from '../assets/star.png';
 import like from '../assets/like.png'
 import dislike from '../assets/dislike.png'
@@ -29,11 +29,11 @@ function singlepost() {
             <span className='font-bold text-lg text-yellow-400'>5</span>
           </div>
         </div>
-        <Slider className='hover:cursor-pointer ' arrows={false} swipe={true}  autoplay={true} pauseOnHover={true}>
-          <img className=' w-1/2 p-3 sm:p-16 ' src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
-          <img className=' w-1/2 p-3 sm:p-16 ' src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
-          <img className=' w-1/2 p-3 sm:p-16 ' src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
-        </Slider>
+        <div className='hover:cursor-pointer ' >
+          <img className=' w-full  p-3 sm:p-16 ' src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+          {/* <img className=' w-1/2 p-3 sm:p-16 ' src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+          <img className=' w-1/2 p-3 sm:p-16 ' src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" /> */}
+        </div>
         <h2 className='text-lg font-medium '>About This Seller</h2>
         <p className='text-gray-700' >
           I use an AI program to create images based on text prompts. This
