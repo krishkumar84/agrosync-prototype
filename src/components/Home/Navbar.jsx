@@ -98,7 +98,7 @@ function Navbar() {
         {!currentuser?.isSeller && <li className="cursor-pointer font-medium" onClick={() => {}}>
           <button className="border hover:border-green-700 rounded-md hover:bg-green-600 px-5 py-1.5 text-green-500 hover:text-white">Join</button>
         </li>}
-        {currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">Orders </li>}
+        {currentuser?.isSeller && <Link to='/orders'> <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">Orders </li> </Link>}
         {currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
           switch to selling
         </li>}
@@ -118,12 +118,12 @@ function Navbar() {
           {Open && <div className="absolute top-12 w-32 bg-white mt-3 flex flex-col p-4 gap-1.5 text-gray-700  cursor-pointe font-medium rounded-md">
             {currentuser?.isSeller && (
               <>
-             <Link  to="/post"> <span>Post</span></Link>
-             <Link  to="/newpost"> <span>Add New</span></Link>
+             <Link onClick={() => setOpen(!Open)} to="/myposts"> <span>Post</span></Link>
+             <Link onClick={() => setOpen(!Open)} to="/addpost"> <span>Add New</span></Link>
               </>
               )}
-              <Link  to="/orders"> <span>Orders</span> </Link>
-              <Link  to="/logout"> <span>logout</span> </Link>
+              <Link onClick={() => setOpen(!Open)} to="/orders"> <span>Orders</span> </Link>
+              <Link onClick={() => setOpen(!Open)} to="/logout"> <span>logout</span> </Link>
           </div>}
           </li>}
           </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import './App.css'
 import Home from './components/Home/Home'
 
@@ -7,12 +7,16 @@ import Navbar from './components/Home/Navbar'
 import Posts from './components/Posts/Posts'
 import NavMenu from './components/Home/NavMenu'
 import Singlepost from './components/Posts/Singlepost'
+import MyPost from './components/Posts/MyPost'
+import Orders from './components/Posts/Orders'
+import AddPost from './components/Posts/AddPost'
 
 import {
   createBrowserRouter,
   RouterProvider,
   Outlet
 } from "react-router-dom";
+
 
 
 const Layout = () => {
@@ -41,6 +45,18 @@ const router = createBrowserRouter([
     {
       path: "/posts",
       element: <Singlepost/>
+    },
+    {
+      path: "/myposts",
+      element: <MyPost/>
+    },
+    {
+      path: "/orders",
+      element: <Orders/>
+    },
+    {
+      path: "/addpost",
+      element: <AddPost/>
     }]
   },
 ]);
