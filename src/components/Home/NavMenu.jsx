@@ -58,7 +58,8 @@ function NavMenu() {
         <ul className="sm:ml-8 ml-2 w-full py-8 items-center">
         <Link to="/post">
         <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl"> Post</li> </Link>
-        <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl">Orders</li>
+        <Link to="/orders">
+        <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl">Orders</li> </Link>
         <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl" >
           Switch To Buyer
         </li>
