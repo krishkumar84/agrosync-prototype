@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import arrow from '../assets/down-arrow.png';
 import {posts} from '../../utils/categories';
-import Post from '../Post/Post';
+import Post from './Post';
 
 function Posts() {
   const [open, setOpen] = useState(false);

@@ -5,7 +5,7 @@ import like from '../assets/heart.png'
 
 function Post({ item }) {
   return (
-    <Link to={`/post/${item.id}`}>
+    <Link to="/posts">
       <div className="sm:w-64 w-full  rounded-sm  border-2 mb-6">
         <img className="w-full h-1/2 rounded-md bg-cover" src={item.img} alt="" />
         <div className="flex flex-col gap-2 pt-2 ">

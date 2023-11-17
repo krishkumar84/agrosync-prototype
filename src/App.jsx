@@ -6,6 +6,7 @@ import Footer from './components/Home/Footer'
 import Navbar from './components/Home/Navbar'
 import Posts from './components/Posts/Posts'
 import NavMenu from './components/Home/NavMenu'
+import Singlepost from './components/Posts/Singlepost'
 
 import {
   createBrowserRouter,
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
     {
       path: "/post",
       element: <Posts/>
+    },
+    {
+      path: "/posts",
+      element: <Singlepost/>
     }]
   },
 ]);

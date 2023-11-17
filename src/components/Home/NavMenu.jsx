@@ -59,7 +59,7 @@ function NavMenu() {
         <Link to="/post">
         <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl"> Post</li> </Link>
         <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl">Orders</li>
-        <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl" onClick={() => {}}>
+        <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl" >
           Switch To Buyer
         </li>
         <li
