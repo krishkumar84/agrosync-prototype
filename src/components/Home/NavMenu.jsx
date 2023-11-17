@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useSpring, animated } from 'react-spring';
+import { Link } from "react-router-dom";
 const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
 
 function NavMenu() {
@@ -20,7 +21,7 @@ function NavMenu() {
 
       if (scrolled >= 140) {
         setScrolling(true);
-      } else if (scrolled >= 42) {
+      } else if (scrolled >= 0) {
         setBgColorScrolling(true);
       } else {
         setScrolling(false);
@@ -55,9 +56,10 @@ function NavMenu() {
         <animated.div style={bgColorSpring} className={`${isDivVisible ? "nav2" : "hidden"}`}>
             <div className="">
         <ul className="sm:ml-8 ml-2 w-full py-8 items-center">
-        <li className="cursor-pointer py-5 text-3xl">Create Post</li>
-        <li className="cursor-pointer py-5 text-3xl">Orders</li>
-        <li className="cursor-pointer py-5 text-3xl" onClick={() => {}}>
+        <Link to="/post">
+        <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl"> Post</li> </Link>
+        <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl">Orders</li>
+        <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl" onClick={() => {}}>
           Switch To Buyer
         </li>
         <li

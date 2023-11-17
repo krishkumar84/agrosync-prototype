@@ -5,6 +5,7 @@ import Home from './components/Home/Home'
 import Footer from './components/Home/Footer'
 import Navbar from './components/Home/Navbar'
 import Posts from './components/Posts/Posts'
+import NavMenu from './components/Home/NavMenu'
 
 import {
   createBrowserRouter,
@@ -17,6 +18,7 @@ const Layout = () => {
   return(
     <div className='app'>
     <Navbar/>
+    <NavMenu/>
     <Outlet/>
     <Footer/> 
     </div> 

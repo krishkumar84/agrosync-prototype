@@ -3,6 +3,7 @@ import image1 from "../assets/agroimg1.jpeg"
 import image2 from "../assets/agroimg2.jpeg"
 import image3 from "../assets/agroimg3.jpeg"
 import image4 from "../assets/agroimg4.jpeg"
+import { Link } from "react-router-dom";
 
 
 
@@ -16,9 +17,11 @@ function PopularServices() {
 
   return (
     <div className=" ml-16 sm:ml-16 my-8 ">
-      <h2 className="text-4xl mb-5 text-gray-800 font-bold">
-        Popular Services
-      </h2>
+     <Link to="/post">
+   <h2 className="text-4xl z-30 mb-5 text-gray-800 font-bold">
+      Popular Services
+   </h2>
+</Link>
       <ul className="flex mt-12 flex-wrap gap-12">
         {popularServicesData.map(({ name, label, image }) => (
           <li key={name} className="relative  cursor-pointer">

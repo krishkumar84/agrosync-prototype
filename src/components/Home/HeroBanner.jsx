@@ -35,7 +35,7 @@ function HomeBanner() {
 
   return (
     <div className="sm:h-[540px] h-[480px]   z-10 bg-green-600 sm:bg-white relative bg-cover">
-      <div className="absolute hidden sm:block top-0 right-0 w-[100vw] h-[800px] transition-opacity z-0">
+      <div className="absolute hidden sm:inline-block top-0 right-0 w-[100vw] transition-opacity z-0">
         <img
           alt="hero"
           src={imageSources[imageIndex]}
