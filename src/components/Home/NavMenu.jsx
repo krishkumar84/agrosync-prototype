@@ -56,7 +56,7 @@ function NavMenu() {
         <animated.div style={bgColorSpring} className={`${isDivVisible ? "nav2" : "hidden"}`}>
             <div className="">
         <ul className="sm:ml-8 ml-2 w-full py-8 items-center">
-        <Link to="/post">
+        <Link to="/myposts">
         <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl"> Post</li> </Link>
         <Link to="/orders">
         <li onClick={handleButtonClick} className="cursor-pointer py-5 text-3xl">Orders</li> </Link>
