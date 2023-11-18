@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { IoSearchOutline } from "react-icons/io5";
 import AgroLogo from "../assets/AgroSync.png";
 import { Link } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 
 
 function Navbar() {
@@ -11,11 +12,7 @@ function Navbar() {
   const [Open, setOpen] = useState(false);
   const [bgColorScrolling, setBgColorScrolling] = useState(false);
   const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
-  const currentuser = {
-    id: 1,
-    username: "krish",
-    isSeller:  true
-  }
+  const currentuser = JSON.parse(localStorage.getItem("currentUser"));
 
 
   useEffect(() => {
@@ -38,6 +35,16 @@ function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout");
+      localStorage.setItem("currentUser", null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleSearch = () => {
     // Handle search logic
@@ -94,10 +101,10 @@ function Navbar() {
         {!currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
           Become a Seller
         </li>}
-        {!currentuser?.isSeller && <li className="cursor-pointer  text-gray-600 hover:text-[#1DBF73] font-medium">Sign in </li>}
-        {!currentuser?.isSeller && <li className="cursor-pointer font-medium" onClick={() => {}}>
+        {!currentuser?.isSeller && <Link to='/login'> <li className="cursor-pointer  text-gray-600 hover:text-[#1DBF73] font-medium">Sign in </li></Link>}
+        {!currentuser?.isSeller && <Link to='/register'> <li className="cursor-pointer font-medium" onClick={() => {}}>
           <button className="border hover:border-green-700 rounded-md hover:bg-green-600 px-5 py-1.5 text-green-500 hover:text-white">Join</button>
-        </li>}
+        </li></Link>}
         {currentuser?.isSeller && <Link to='/orders'> <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">Orders </li> </Link>}
         {currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
           switch to selling
@@ -109,12 +116,13 @@ function Navbar() {
         >
           <img
             onClick={() => setOpen(!Open)}
-            src={commonImageUrl}
+            src={currentuser.img || commonImageUrl}
             alt="Profile"
             width={40}
             height={40}
             className="rounded-full "
           />
+          <span>{currentuser?.username}</span>
           {Open && <div className="absolute top-12 w-32 bg-white mt-3 flex flex-col p-4 gap-1.5 text-gray-700  cursor-pointe font-medium rounded-md">
             {currentuser?.isSeller && (
               <>
@@ -123,7 +131,7 @@ function Navbar() {
               </>
               )}
               <Link onClick={() => setOpen(!Open)} to="/orders"> <span>Orders</span> </Link>
-              <Link onClick={() => setOpen(!Open)} to="/logout"> <span>logout</span> </Link>
+              <Link  onClick={handleLogout}> <span>logout</span> </Link>
           </div>}
           </li>}
           </div>

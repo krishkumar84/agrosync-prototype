@@ -10,6 +10,8 @@ import Singlepost from './components/Posts/Singlepost'
 import MyPost from './components/Posts/MyPost'
 import Orders from './components/Posts/Orders'
 import AddPost from './components/Posts/AddPost'
+import Login from './components/Login'
+import Register from './components/Register'
 
 import {
   createBrowserRouter,
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
     {
       path: "/addpost",
       element: <AddPost/>
+    },
+    {
+      path: "/login",
+      element: <Login/>
+    },
+    {
+      path: "/register",
+      element: <Register/>
     }]
   },
 ]);
