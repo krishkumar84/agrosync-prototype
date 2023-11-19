@@ -1,13 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import star from '../assets/star.png';
-import like from '../assets/heart.png'
+import like from '../assets/heart.png';
+import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
 
 function Post({ item }) {
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: [item.userId],
+    queryFn: () =>
+      newRequest.get(`/users/${item.userId}`).then((res) => {
+        return res.data;
+      }),
+  });
+
   return (
     <Link to="/posts">
       <div className="sm:w-64 w-full  rounded-sm  border-2 mb-6">
-        <img className="w-full h-1/2 rounded-md bg-cover" src={item.img} alt="" />
+        <img className="w-full h-1/2 rounded-md bg-cover" src={item.cover} alt="" />
         <div className="flex flex-col gap-2 pt-2 ">
           <div className="flex items-center gap-4">
             <img className="w-6 h-6 ml-1.5  rounded-full" src={item.pp} alt="" />

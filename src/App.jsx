@@ -19,15 +19,27 @@ import {
   Outlet
 } from "react-router-dom";
 
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 
-const Layout = () => {
-  return(
-    <div className='app'>
+function App() {
+  const queryClient = new QueryClient();
+  
+  const Layout = () => {
+    return(
+      <div className='app'>
+      <QueryClientProvider client={queryClient}>
     <Navbar/>
     <NavMenu/>
     <Outlet/>
     <Footer/> 
+    </QueryClientProvider>
     </div> 
   )
 }
@@ -72,7 +84,6 @@ const router = createBrowserRouter([
 ]);
 
 
-function App() {
 
 
   return (

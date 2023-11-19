@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
  import userRoute from "./routes/user.route.js";
-// import postRoute from "./routes/post.route.js";
+ import postRoute from "./routes/post.route.js";
 // import orderRoute from "./routes/order.route.js";
 // import reviewRoute from "./routes/review.route.js";
 import authRoute from "./routes/auth.route.js";
@@ -28,7 +28,7 @@ const connect = async () => {
 
   app.use("/api/auth", authRoute);
   app.use("/api/users", userRoute);
-//   app.use("/api/post", postRoute);
+   app.use("/api/posts", postRoute);
 //   app.use("/api/orders", orderRoute);
 //   app.use("/api/reviews", reviewRoute);
 

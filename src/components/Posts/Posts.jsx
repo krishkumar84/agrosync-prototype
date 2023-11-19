@@ -1,16 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 import arrow from '../assets/down-arrow.png';
 import {posts} from '../../utils/categories';
 import Post from './Post';
+import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
+import { useLocation } from "react-router-dom";
 
 function Posts() {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("sales");
+  const minRef = useRef();
+  const maxRef = useRef();
 
-  const resort = (type) => {
+  const { search } = useLocation();
+
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["posts"],
+    queryFn: () =>
+      newRequest
+        .get(
+          `/posts${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+        )
+        .then((res) => {
+          return res.data;
+        }),
+  });
+
+  // console.log(data);
+
+
+  const reSort = (type) => {
     setSort(type)
     setOpen(false)
-  }
+  };
+
+  useEffect(() => {
+    refetch();
+  }, [sort]);
+
+  const apply = () => {
+    refetch();
+  };
+
 
   return (
     <div className='flex py-24 justify-center'>
@@ -21,9 +52,9 @@ function Posts() {
         <div className="flex items-center justify-between">
           <div className="flex p-[7px] flex-wrap items-center gap-3 ">
             <span className='block'>Budget</span>
-            <input className='p-1.5 mr-2 border outline-none' type="text" placeholder='min' />
-            <input className='p-1.5 border outline-none' type="text" placeholder='max' />
-            <button className='rounded-md cursor-pointer border px-3 py-1 hover:text-white bg-[#1DBF73]'>Apply</button>
+            <input className='p-1.5 mr-2 border outline-none' type="number" ref={minRef} placeholder='min' />
+            <input className='p-1.5 border outline-none' type="number" ref={maxRef} placeholder='max' />
+            <button onClick={apply} className='rounded-md cursor-pointer border px-3 py-1  hover:text-white bg-[#1DBF73]'>Apply</button>
           </div>
           <div className="flex flex-wrap items-center gap-3 ">
             <span className="text-greay-600 font-normal">Sort by</span>
@@ -34,16 +65,24 @@ function Posts() {
             </div>
             {open && (
               <div className="p-5 bg-white rounded-md border-gray-200 absolute mt-32 right-0 gap-5 flex flex-col">
-               { sort === "sales" ? <span onClick={() => resort("createdAt")}>Newest</span>
-                : <span onClick={() => resort("sales")}>Best Selling</span>
-             } </div>
+              {sort === "sales" ? (
+                  <span onClick={() => reSort("createdAt")}>Newest</span>
+                ) : (
+                  <span onClick={() => reSort("sales")}>Best Selling</span>
+                )}
+                <span onClick={() => reSort("sales")}>Popular</span> </div>
             )}
           </div>
         </div>
         <div className=" items-center mt-12 justify-between flex flex-wrap ">
-         {posts.map(post => (
-        <Post key={post.id} item={post} />
-    ))}
+         {/* {posts.map(post => (
+        <Post key={post.id} item={post} /> */}
+        {isLoading
+  ? "loading"
+  : error
+  ? "Something went wrong!"
+  : data && data.map((post) => <Post key={post._id} item={post} />)} 
+
 </div>
 
       </div>
