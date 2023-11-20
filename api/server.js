@@ -4,7 +4,7 @@ import dotenv from "dotenv";
  import userRoute from "./routes/user.route.js";
  import postRoute from "./routes/post.route.js";
 // import orderRoute from "./routes/order.route.js";
-// import reviewRoute from "./routes/review.route.js";
+ import reviewRoute from "./routes/review.route.js";
 import authRoute from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -30,7 +30,7 @@ const connect = async () => {
   app.use("/api/users", userRoute);
    app.use("/api/posts", postRoute);
 //   app.use("/api/orders", orderRoute);
-//   app.use("/api/reviews", reviewRoute);
+  app.use("/api/reviews", reviewRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

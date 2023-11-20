@@ -17,7 +17,7 @@ function PopularServices() {
 
   return (
     <div className=" ml-16 sm:ml-16 my-8 ">
-     <Link to="/post">
+     <Link to="/posts">
    <h2 className="text-4xl z-30 mb-5 text-gray-800 font-bold">
       Popular Services
    </h2>
