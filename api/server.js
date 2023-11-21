@@ -22,7 +22,7 @@ const connect = async () => {
       console.log(error);
     }
   };
-  app.use(cors({ origin: "https://api-h2x3.onrender.com", credentials: true }));
+  app.use(cors({ origin: "https://api-i52xta4p4-krish-kumars-projects.vercel.app/", credentials: true }));
   app.use(express.json());
   app.use(cookieParser());
 
@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
   
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ;
 
 app.listen(port, () => {
     connect();
