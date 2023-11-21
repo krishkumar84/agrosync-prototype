@@ -34,8 +34,7 @@ function Register() {
 
     const url = await upload(file);
     try {
-      // Assuming you have the newRequest function available
-      // You may need to modify this part based on your actual implementation
+     
       await newRequest.post("/auth/register", {
         ...user,
         img: url,

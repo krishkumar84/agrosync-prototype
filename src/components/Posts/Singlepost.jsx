@@ -138,7 +138,7 @@ function singlepost() {
           </div>
         </div>
           )}
-          <Review postId={id} />
+          {/* <Review postId={id} /> */}
         </div>
       <div className="flex-1 border-3 border-gray-400 p-5 flex flex-wrap flex-col gap-5 sm:sticky  top-[50px] max-h-content max-h-[500px] ">
         <div className="flex items-center justify-between">

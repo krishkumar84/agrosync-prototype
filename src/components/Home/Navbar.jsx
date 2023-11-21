@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from 'react-spring';
 import { IoSearchOutline } from "react-icons/io5";
 import AgroLogo from "../assets/AgroSync.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 
 

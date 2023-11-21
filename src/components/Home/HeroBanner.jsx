@@ -6,6 +6,7 @@ import bgHero3 from '../assets/Component3.png';
 import bgHero4 from '../assets/Component4.png';
 import bgHero5 from '../assets/Component5.png';
 import bgHero6 from '../assets/Component6.png';
+import {useNavigate}  from "react-router-dom";
 
 const imageSources = [
   bgHero,
@@ -18,8 +19,16 @@ const imageSources = [
 
 function HomeBanner() {
   const [imageIndex, setImageIndex] = useState(0);
-  const [searchData, setSearchData] = useState("");
+  const [input, setInput] = useState("");
   const [fadeClass, setFadeClass] = useState("image-transition");
+
+  const navigate = useNavigate()
+
+  const handleSubmit = ()=> {
+   navigate(`/posts?search=${input}`)
+  }
+
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,13 +66,13 @@ function HomeBanner() {
               type="text"
               className="h-14 sm:w-[450px] w-[240px] pl-10 rounded-md rounded-r-none"
               placeholder={`Try "Finding any crop"`}
-              value={searchData}
-              onChange={(e) => setSearchData(e.target.value)}
+              
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
           <button
             className="bg-[#1DBF73] text-white  px-4 sm:px-12 text-lg font-semibold rounded-r-md"
-            onClick={() => alert(`Search: ${searchData}`)} 
+            onClick={handleSubmit} 
           >
             Search
           </button>

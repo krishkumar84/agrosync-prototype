@@ -1,16 +1,49 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import bin from '../assets/delete.png'
+import getCurrentUser from "../../utils/getCurrentUser";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
+
 
 function MyPost() {
-    const currentUser = {
-        id: 1,
-        username: "Anna",
-        isSeller: true,
-      };
+  const currentUser = getCurrentUser();
+
+  const queryClient = useQueryClient();
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["myPost"],
+    queryFn: () =>
+      newRequest.get(`/posts?userId=${currentUser.id}`).then((res) => {
+        console.log("API Response:", res.data);
+        return res.data;
+      }).catch((error) => {
+        console.error("API Error:", error);
+        throw error;
+      }),
+  });
+  
+  const mutation = useMutation({
+    mutationFn: (id) => {
+      return newRequest.delete(`/posts/${id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["myPosts"]);
+    },
+  });
+
+  const handleDelete = (id) => {
+    mutation.mutate(id);
+  };
+
     
       return (
         <div className="flex flex-wrap pt-16 px-12 justify-center bg-white ">
+          {isLoading ? (
+        "loading"
+      ) : error ? (
+        "error"
+      ) : (
           <div className="w-full pt-12">
             <div className="flex fle justify-between">
               <h1 className="text-3xl mb-5 font-bold">{currentUser.isSeller ? "Gigs" : "Orders"}</h1>
@@ -28,98 +61,26 @@ function MyPost() {
                 <th className='text-left'>Sales</th>
                 <th className='text-left'>Action</th>
               </tr>
-              <tr className="h-12" >
+              {data.map((gig) => (
+              <tr key={gig._id} className="h-12" >
                 <td>
                   <img
                     className="w-12  h-6 object-cover"
-                    src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    src={gig.cover}
                     alt=""
                   />
                 </td>
-                <td className="px-3">Stunning concept art</td>
-                <td>59$</td>
-                <td>13</td>
+                <td className="px-3">{gig.title}</td>
+                <td>{gig.price}</td>
+                <td>{gig.sales}</td>
                 <td>
-                  <img className="w-5 cursor-pointer" src={bin} alt="" />
+                  <img onClick={() => handleDelete(gig._id)} className="w-5 cursor-pointer" src={bin} alt="" />
                 </td>
               </tr>
-              <tr className="h-12">
-                <td>
-                  <img
-                    className="w-12 h-6 object-cover"
-                    src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt=""
-                  />
-                </td>
-                <td className="px-3">Ai generated concept art</td>
-                <td>120$</td>
-                <td>41</td>
-                <td>
-                  <img className="w-5 cursor-pointer" src={bin} alt="" />
-                </td>
-              </tr>
-              <tr className="h-12">
-                <td>
-                  <img
-                    className="w-12 h-6 object-cover"
-                    src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt=""
-                  />
-                </td>
-                <td className="px-3">High quality digital character</td>
-                <td>79$</td>
-                <td>55</td>
-                <td>
-                  <img className="w-5 cursor-pointer" src={bin} alt="" />
-                </td>
-              </tr>
-              <tr className="h-12">
-                <td >
-                  <img
-                    className="w-12 h-6 object-cover"
-                    src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt=""
-                  />
-                </td>
-                <td className="px-3">Illustration hyper realistic painting</td>
-                <td>119$</td>
-                <td>29</td>
-                <td >
-                  <img className="w-5 cursor-pointer" src={bin} alt="" />
-                </td>
-              </tr>
-              <tr className="h-12">
-                <td>
-                  <img
-                    className="w-12 h-6 object-cover"
-                    src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt=""
-                  />
-                </td>
-                <td className="px-3">Original ai generated digital art</td>
-                <td>59$</td>
-                <td>34</td>
-                <td>
-                  <img className="w-5 cursor-pointer" src={bin} alt="" />
-                </td>
-              </tr>
-              <tr className="h-12">
-                <td >
-                  <img
-                    className="w-12 h-6 object-cover"
-                    src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt=""
-                  />
-                </td>
-                <td className="px-3">Text based ai generated art</td>
-                <td>110$</td>
-                <td>16</td>
-                <td>
-                  <img className="w-5 cursor-pointer" src={bin} alt="" />
-                </td>
-              </tr>
+                ))}
             </table>
           </div>
+            )}
         </div>
   );
 }
