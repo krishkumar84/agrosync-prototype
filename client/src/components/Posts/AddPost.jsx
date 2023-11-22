@@ -86,7 +86,7 @@ function AddPost() {
             <input
               id="title"
               type="text"
-              
+              name='title'
               placeholder="e.g. name of my crop"
               onChange={handleChange}
               className="p-4 border-2 border-gray-300 rounded-md"
