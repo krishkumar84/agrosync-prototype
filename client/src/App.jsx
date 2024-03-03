@@ -1,11 +1,8 @@
 
 import './App.css'
 import Home from './components/Home/Home'
-
-import Footer from './components/Home/Footer'
-import Navbar from './components/Home/Navbar'
+import { AuthProvider } from './context/AuthContext';
 import Posts from './components/Posts/Posts'
-import NavMenu from './components/Home/NavMenu'
 import Singlepost from './components/Posts/Singlepost'
 import MyPost from './components/Posts/MyPost'
 import Orders from './components/Posts/Orders'
@@ -26,23 +23,26 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Layout from './Layout';
 
 
 function App() {
   const queryClient = new QueryClient();
   
-  const Layout = () => {
-    return(
-      <div className='app'>
-      <QueryClientProvider client={queryClient}>
-    <Navbar/>
-    <NavMenu/>
-    <Outlet/>
-    <Footer/> 
-    </QueryClientProvider>
-    </div> 
-  )
-}
+//   const Layout = () => {
+//     return (
+//       <div className="app">
+//         <QueryClientProvider client={queryClient}>
+//           <AuthProvider>
+//             <Navbar currentUser={currentUser} />
+//             <NavMenu currentUser={currentUser} />
+//             <Outlet />
+//             <Footer />
+//           </AuthProvider>
+//         </QueryClientProvider>
+//       </div>
+//     );
+// }
 
 const router = createBrowserRouter([
   {
@@ -87,14 +87,12 @@ const router = createBrowserRouter([
 
 
   return (
-    <>
-      {/* <Navbar/>  
-     
-     <Footer/> */}
-      <RouterProvider router={router} />
-     
-    </>
-  )
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default App

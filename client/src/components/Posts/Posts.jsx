@@ -20,6 +20,7 @@ function Posts() {
       newRequest
         .get(
           `/posts${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+          //`posts?cat=wheat`
         )
         .then((res) => {
           return res.data;

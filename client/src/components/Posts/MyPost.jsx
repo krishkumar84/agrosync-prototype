@@ -8,13 +8,14 @@ import newRequest from "../../utils/newRequest";
 
 function MyPost() {
   const currentUser = getCurrentUser();
+  console.log(currentUser._id);
 
   const queryClient = useQueryClient();
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["myPost"],
     queryFn: () =>
-      newRequest.get(`/posts?userId=${currentUser.id}`).then((res) => {
+      newRequest.get(`/posts?userId=${currentUser._id}`).then((res) => {
         console.log("API Response:", res.data);
         return res.data;
       }).catch((error) => {

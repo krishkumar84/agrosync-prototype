@@ -4,6 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import AgroLogo from "../assets/AgroSync.png";
 import { Link, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
+import { useAuth } from '../../context/AuthContext';
 
 
 function Navbar() {
@@ -12,10 +13,10 @@ function Navbar() {
   const [Open, setOpen] = useState(false);
   const [bgColorScrolling, setBgColorScrolling] = useState(false);
   const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
-  const currentuser = JSON.parse(localStorage.getItem("currentUser"));
+ // const [currentUser, setcurrentUser] = useState(null);
+ const { currentUser, logout } = useAuth();
 
-
-  useEffect(() => {
+    useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
 
@@ -31,16 +32,19 @@ function Navbar() {
 
     window.addEventListener('scroll', handleScroll);
 
+    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [currentUser]);
 
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
-      localStorage.setItem("currentUser", null);
-      navigate("/");
+      setOpen(false);
+      logout();
     } catch (err) {
       console.log(err);
     }
@@ -66,6 +70,7 @@ function Navbar() {
       transform: `translateY(${scrolling ? 0 : -20}px)`,
     });
   }, [scrolling]);
+
 
   return (
     <animated.nav className="w-full fixed  px-0 sm:pr-4 flex justify-between items-center py-2 z-20" style={bgColorSpring}>
@@ -98,33 +103,33 @@ function Navbar() {
         </animated.button>
       </div>
       <ul className="sm:ml-16 ml-2 w-full xl:ml-20 2xl:ml-72 gap-2 sm:gap-10 hidden sm:flex items-center">
-        {!currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
+        {!currentUser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
           Become a Seller
         </li>}
-        {!currentuser?.isSeller && <Link to='/login'> <li className="cursor-pointer  text-gray-600 hover:text-[#1DBF73] font-medium">Sign in </li></Link>}
-        {!currentuser?.isSeller && <Link to='/register'> <li className="cursor-pointer font-medium" onClick={() => {}}>
+        {!currentUser && <Link to='/login'> <li className="cursor-pointer  text-gray-600 hover:text-[#1DBF73] font-medium">Sign in </li></Link>}
+        {!currentUser && <Link to='/register'> <li className="cursor-pointer font-medium" onClick={() => {}}>
           <button className="border hover:border-green-700 rounded-md hover:bg-green-600 px-5 py-1.5 text-green-500 hover:text-white">Join</button>
         </li></Link>}
-        {currentuser?.isSeller && <Link to='/orders'> <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">Orders </li> </Link>}
-        {currentuser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
+        {currentUser?.isSeller && <Link to='/orders'> <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">Orders </li> </Link>}
+        {currentUser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
           switch to selling
         </li>}
         <div className="flex center gap-3 ">
-        {currentuser?.isSeller && <li
+        {currentUser && <li
           className="cursor-pointer "
           title="Profile"
         >
           <img
             onClick={() => setOpen(!Open)}
-            src={currentuser.img || commonImageUrl}
+            src={currentUser.img || commonImageUrl}
             alt="Profile"
             width={40}
             height={40}
             className="rounded-full "
           />
-          <span>{currentuser?.username}</span>
+          <span>{currentUser?.username}</span>
           {Open && <div className="absolute top-12 w-32 bg-white mt-3 flex flex-col p-4 gap-1.5 text-gray-700  cursor-pointe font-medium rounded-md">
-            {currentuser?.isSeller && (
+            {currentUser?.isSeller && (
               <>
              <Link onClick={() => setOpen(!Open)} to="/myposts"> <span>Post</span></Link>
              <Link onClick={() => setOpen(!Open)} to="/addpost"> <span>Add New</span></Link>

@@ -38,6 +38,17 @@ export const getPost = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getPostsByUserId = async (req, res, next) => {
+  try {
+    console.log(req.params.userId);
+    const posts = await Post.find({ userId: req.params.userId });
+    res.status(200).send(posts);
+  } catch (err) {
+    next(err);
+  }
+
+};
 export const getPosts = async (req, res, next) => {
   const q = req.query;
   const filters = {

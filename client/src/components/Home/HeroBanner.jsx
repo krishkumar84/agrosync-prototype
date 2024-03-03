@@ -25,7 +25,8 @@ function HomeBanner() {
   const navigate = useNavigate()
 
   const handleSubmit = ()=> {
-   navigate(`/posts?search=${input}`)
+ navigate(`/posts?search=${input}`)
+   
   }
 
   

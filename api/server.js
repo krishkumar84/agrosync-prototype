@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
   
-const port = process.env.PORT ;
+const port = 3000; // Set the desired port number ;
 
 app.listen(port, () => {
     connect();

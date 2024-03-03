@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import newRequest from "../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,6 +15,7 @@ function Login() {
     try {
       const res = await newRequest.post("/auth/login", { username, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
+      login(res.data);
       navigate("/");
     } catch (err) {
       setError(err.response.data);
