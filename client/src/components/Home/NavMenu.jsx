@@ -4,11 +4,13 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useSpring, animated } from 'react-spring';
 import { Link } from "react-router-dom";
 const commonImageUrl = 'https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg';
+import { useAuth } from '../../context/AuthContext';
 
 function NavMenu() {
   const [isDivVisible, setDivVisible] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [bgColorScrolling, setBgColorScrolling] = useState(false);
+  const { currentUser, logout } = useAuth();
 
   const handleButtonClick = () => {
     // Toggle the visibility of the div
@@ -69,6 +71,20 @@ function NavMenu() {
           title="Profile"
         >
         </li>
+        {currentUser && <li
+          className="cursor-pointer "
+          title="Profile"
+        >
+          <img
+            onClick={() => setOpen(!Open)}
+            src={currentUser.img || commonImageUrl}
+            alt="Profile"
+            width={40}
+            height={40}
+            className="rounded-full "
+          />
+          <span>{currentUser?.username}</span>
+          </li>}
       </ul>
       </div>
         </animated.div>

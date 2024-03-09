@@ -50,8 +50,9 @@ function Navbar() {
     }
   };
 
+  const navigate = useNavigate()
   const handleSearch = () => {
-    // Handle search logic
+    navigate(`/posts?search=`)
   };
  
 

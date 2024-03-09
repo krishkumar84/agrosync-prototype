@@ -25,7 +25,8 @@ function HomeBanner() {
   const navigate = useNavigate()
 
   const handleSubmit = ()=> {
- navigate(`/posts?search=${input}`)
+ navigate(`/posts?search=`)
+ //navigate(`/posts?search=${input}`)
    
   }
 
@@ -80,17 +81,17 @@ function HomeBanner() {
         </div>
         <div className="text-white hidden sm:flex  gap-4">
           Popular:
-          <ul className="flex pt-2 gap-5">
+          <ul className="flex  gap-5">
             <li className="text-sm py-1  px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
               Wheat
             </li>
-            <li className="text-sm py-1 px-3 border rounded-full hover.bg-white hover.text-black transition-all duration-300 cursor-pointer">
+            <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
               Rice
             </li>
-            <li className="text-sm py-1 px-3 border rounded-full hover.bg-white hover.text-black transition-all duration-300 cursor-pointer">
+            <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
               Maize
             </li>
-            <li className="text-sm py-1 px-3 border rounded-full hover.bg-white hover.text-black transition-all duration-300 cursor-pointer">
+            <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
               SugarCane
             </li>
           </ul>

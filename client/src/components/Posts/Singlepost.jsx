@@ -9,7 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import pfp from "../assets/user.png";
-import Review from './Review';
+import Reviews from './Reviews';
 
 function singlepost() {
   const { id } = useParams();
@@ -138,7 +138,7 @@ function singlepost() {
           </div>
         </div>
           )}
-          {/* <Review postId={id} /> */}
+          <Reviews postId={id} />
         </div>
       <div className="flex-1 border-3 border-gray-400 p-5 flex flex-wrap flex-col gap-5 sm:sticky  top-[50px] max-h-content max-h-[500px] ">
         <div className="flex items-center justify-between">
