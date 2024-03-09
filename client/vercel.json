@@ -1,17 +1,5 @@
 {
-    "version": 2,
-    "public": true,
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.html",
-        "status": 200
-      }
-    ]
-  }
+    "rewrites":  [
+        {"source": "/(.*)", "destination": "/"}
+     ]
+ }
