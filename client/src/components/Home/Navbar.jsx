@@ -5,6 +5,7 @@ import AgroLogo from "../assets/AgroSync.png";
 import { Link, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import { useAuth } from '../../context/AuthContext';
+import toast from "react-hot-toast";
 
 
 function Navbar() {
@@ -44,6 +45,7 @@ function Navbar() {
     try {
       await newRequest.post("/auth/logout");
       setOpen(false);
+      toast.success("user logged out successfully");
       logout();
     } catch (err) {
       console.log(err);
@@ -112,7 +114,7 @@ function Navbar() {
           <button className="border hover:border-green-700 rounded-md hover:bg-green-600 px-5 py-1.5 text-green-500 hover:text-white">Join</button>
         </li></Link>}
         {currentUser?.isSeller && <Link to='/orders'> <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">Orders </li> </Link>}
-        {currentUser?.isSeller && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
+        {currentUser  && <li className="cursor-pointer text-gray-600 hover:text-[#1DBF73] font-medium">
           switch to selling
         </li>}
         <div className="flex center gap-3 ">

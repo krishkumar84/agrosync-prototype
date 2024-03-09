@@ -4,6 +4,7 @@ import bin from '../assets/delete.png'
 import getCurrentUser from "../../utils/getCurrentUser";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
+import toast from 'react-hot-toast';
 
 
 function MyPost() {
@@ -27,6 +28,7 @@ function MyPost() {
   const mutation = useMutation({
     mutationFn: (id) => {
       return newRequest.delete(`/posts/${id}`);
+      toast.success("Post Deleted");
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myPosts"]);

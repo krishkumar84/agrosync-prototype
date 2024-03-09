@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import newRequest from "../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../context/AuthContext';
+import toast from "react-hot-toast";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -16,9 +17,11 @@ function Login() {
       const res = await newRequest.post("/auth/login", { username, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       login(res.data);
+      toast.success("user loggedIn successfully");
       navigate("/");
     } catch (err) {
       setError(err.response.data);
+      toast.error("Authentication failed. Please check your credentials")
     }
   };
 

@@ -5,6 +5,7 @@ import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
 
 function AddPost() {
 
@@ -41,9 +42,11 @@ function AddPost() {
         })
       );
       setUploading(false);
+      toast.success("Images uploaded successfully");
       dispatch({ type: "ADD_IMAGES", payload: { cover, images } });
     } catch (err) {
       console.log(err);
+      toast.error("Something went wrong");
     }
   };
 
@@ -58,9 +61,12 @@ function AddPost() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myPosts"]);
+      toast.success("Post added successfully");
+      navigate("/myposts");
     },
     onError: (error) => {
       console.error("Mutation error:", error);
+      toast.error("Something went wrong");
       // Handle the error as needed
     },
   });
@@ -69,9 +75,6 @@ function AddPost() {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutation.mutate(state);
-    if (mutation.isSuccess) {
-      navigate("/myposts");
-    }
   };
   
   return (
@@ -104,17 +107,17 @@ function AddPost() {
               <option value="Oilseed">Oilseed Crops</option>
               <option value="Fruit">Fruit Crops</option>
             </select>
-            <div className="images">
-              <div className="imagesInputs">
+            <div className="images ">
+              <div className="imagesInputs flex flex-col">
 
             <label className="text-lg  text-gray-600" htmlFor="coverImage">Cover Image</label>
             <input id="coverImage" type="file" onChange={(e) => setSingleFile(e.target.files[0])} className="p-4 " />
 
-            <label className="text-lg  text-gray-600" htmlFor="uploadImages">Upload Images</label>
+            <label className="text-lg ml-4 text-gray-600" htmlFor="uploadImages">Upload Images</label>
             <input id="uploadImages" type="file"  multiple
                   onChange={(e) => setFiles(e.target.files)}className="p-4" />
                   </div>
-              <button onClick={handleUpload}>
+              <button className='bg-green-500 p-4 rounded-md text-white font-semibold  ' onClick={handleUpload}>
                 {uploading ? "uploading" : "Upload"}
               </button>
             </div>
@@ -172,18 +175,19 @@ function AddPost() {
             <label className="text-lg  text-gray-600" htmlFor="addFeatures">Key Features</label>
             <form action="" className="add" onSubmit={handleFeature}>
               <input type="text" placeholder="e.g. page design" />
-              <button type="submit">add</button>
+              <button className='bg-green-500 p-2 ml-1 rounded-md text-white font-semibold' type="submit">add</button>
             </form>
             <div className="addedFeatures">
               {state?.features?.map((f) => (
                 <div className="item" key={f}>
                   <button
+                    className='bg-green-500 p-2 rounded-md text-white font-semibold'
                     onClick={() =>
                       dispatch({ type: "REMOVE_FEATURE", payload: f })
                     }
                   >
                     {f}
-                    <span>X</span>
+                    <span className='ml-1'>X</span>
                   </button>
                 </div>
               ))}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import newRequest from "../utils/newRequest";
 import upload from "../utils/upload";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Register() {
   const [file, setFile] = useState(null);
@@ -39,9 +40,10 @@ function Register() {
         ...user,
         img: url,
       });
-      navigate("/");
+      toast.success("user registered successfully")
+      navigate("/login");
     } catch (err) {
-      console.log(err);
+      toast.error("Something went wrong!")
     }
   };
 
