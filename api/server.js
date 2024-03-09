@@ -38,6 +38,10 @@ app.use((err, req, res, next) => {
 
   return res.status(errorStatus).send(errorMessage);
 });
+
+app.get('/', (req, res) => {
+  res.status(200).send('Server up and running')
+})
   
 const port = 3000; // Set the desired port number ;
 
