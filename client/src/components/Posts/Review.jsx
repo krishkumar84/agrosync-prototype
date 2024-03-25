@@ -18,7 +18,7 @@ const Review = ({ review }) => {
 
 
   return (
-    <div className="flex flex-col gap-4 review">
+    <div className="flex mb-6 flex-col gap-4 review">
     {isLoading ? (
       "loading"
     ) : error ? (
@@ -33,7 +33,7 @@ const Review = ({ review }) => {
         </div>
       </div>
     )}
-    <div className="flex gap-2 stars">
+    <div className="flex items-center gap-2 stars">
       {Array(review.star)
         .fill()
         .map((item, i) => (
@@ -42,7 +42,7 @@ const Review = ({ review }) => {
       <span className="text-yellow-500 font-bold text-16">{review.star}</span>
     </div>
     <p>{review.desc}</p>
-    <div className="flex items-center gap-2 helpful">
+    <div className="flex items-center  gap-2 helpful">
       <span className="cursor-pointer">Helpful?</span>
       <img className="w-4 cursor-pointer" src={like} alt="" />
       <span>Yes</span>

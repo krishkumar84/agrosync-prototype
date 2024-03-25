@@ -16,13 +16,13 @@ function PopularServices() {
    ];
 
   return (
-    <div className=" ml-16 sm:ml-16 my-8 ">
-     <Link to="/posts">
-    <h2 className="text-4xl z-30 mb-5 text-gray-800 font-bold">
-      Popular Services
-   </h2>
-</Link>
-      <ul className="flex mt-12 flex-wrap gap-12">
+    <div className="  w-full text-justify  mt-16  my-8 ">
+      <Link to="/posts">
+        <h2 className="text-4xl ml-16  z-30 mb-5 text-gray-800 font-bold">
+          Popular Services
+        </h2>
+      </Link>
+      <ul className="flex items-center  justify-evenly mt-12 flex-wrap ">
         {popularServicesData.map(({ name, label, image }) => (
           <li key={name} className="relative  cursor-pointer">
             <div className="absolute z-10 text-gray-600 left-5 top-4">

@@ -44,11 +44,11 @@ const Reviews = ({ postId }) => {
     <form action="" className="flex flex-col addForm" onSubmit={handleSubmit}>
       <input type="text" placeholder="write your opinion" className=" border-2 mt-2 p-12" />
       <select name="" id="" className="w-100 border-2 mt-2 p-2 self-end">
-        <option value={1}>1</option>
-        <option value={2}>2</option>
-        <option value={3}>3</option>
-        <option value={4}>4</option>
         <option value={5}>5</option>
+        <option value={4}>4</option>
+        <option value={3}>3</option>
+        <option value={2}>2</option>
+        <option value={1}>1</option>
       </select>
       <button className="self-end w-100 mt-2 bg-green-500 text-white rounded-md p-2 cursor-pointer">Send</button>
     </form>

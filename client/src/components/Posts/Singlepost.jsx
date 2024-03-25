@@ -48,13 +48,13 @@ function singlepost() {
       ) : (<div className="w-full flex-wrap flex-col-reverse sm:flex-row py-8 flex gap-10">
       <div className="flex-2 w-full sm:w-2/3 px-8 sm:px-12 flex flex-col gap-4">
         <span className="font-bold text-2xl text-gray-800"> Seasonal Crops</span>
-        <h1 className='text-lg text-gray-600'>{data.title}</h1>
+        <h1 className='text-xl font-medium text-gray-600'>{data.title}</h1>
         {isLoadingUser ? (
               "loading"
             ) : errorUser ? (
               "Something went wrong!"
             ) : (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center  gap-3">
           <img
             className="w-12 h-12 object-cover rounded-full"
             src={dataUser.img || pfp }
@@ -73,9 +73,9 @@ function singlepost() {
           )}
         </div>
          )}
-        <div className='hover:cursor-pointer ' >
+        <div className='hover:cursor-pointer  ' >
            {data.images.map((img) => (
-                <img key={img} src={img} alt="" />
+                <img className='rounded-xl' key={img} src={img} alt="" />
               ))} </div>
         <h2 className='text-lg font-medium '>About This Seller</h2>
         <p className='text-gray-700' >
@@ -93,7 +93,7 @@ function singlepost() {
               src={dataUser.img || pfp }
               alt=""
             />
-            <div className="info">
+            <div className="info flex flex-col">
               <span className='text-xl font-medium'>{dataUser.username}</span>
               {!isNaN(data.totalStars / data.starNumber) && (
           <div className="flex items-center gap-2">
@@ -105,7 +105,7 @@ function singlepost() {
             <span className='font-bold text-lg text-yellow-400'>{Math.round(data.totalStars / data.starNumber)}</span>
           </div>
           )}
-              <button className='bg-green-500  text-white rounded-sm  p-2 cursor-pointer'>Contact Me</button>
+              <button className='bg-green-500  text-white rounded-sm mt-2 p-2 cursor-pointer'>Contact Me</button>
             </div>
           </div>
           <div className="border-1 rounded-md p-5 mt-5">
@@ -143,7 +143,7 @@ function singlepost() {
       <div className="flex-1 border-3 border-gray-400 p-5 flex flex-wrap flex-col gap-5 sm:sticky  top-[50px] max-h-content max-h-[500px] ">
         <div className="flex items-center justify-between">
           <h3 className='font-medium text-xl'> {data.shortTitle}</h3>
-          <h2 className='font-normal text-xl'>$ {data.price}</h2>
+          <h2 className='font-normal text-xl'>₹ {data.price} /Kg</h2>
         </div>
         <p className='text-gray-600 mt-3'>
         {data.shortDesc}

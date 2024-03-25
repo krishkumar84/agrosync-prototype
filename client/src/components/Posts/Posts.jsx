@@ -60,18 +60,18 @@ function Posts() {
           <div className="flex flex-wrap items-center gap-3 ">
             <span className="text-greay-600 font-normal">Sort by</span>
             <span className="font-medium "></span>
-            <div className='inline-flex items-center'>
-            <span className=''>{sort === "sales" ? "Best Selling" : "Newest"}</span>
+            <div onClick={() => setOpen(!open)} className='inline-flex cursor-pointer items-center'>
+            <span className='hover:text-[#1DBF73]'>{sort === "sales" ? "Best Selling" : "Newest"}</span>
             <img onClick={() => setOpen(!open)} className="w-[15px] p-0" src={arrow} alt="" />
             </div>
             {open && (
               <div className="p-5 bg-white rounded-md border-gray-200 absolute mt-32 right-0 gap-5 flex flex-col">
               {sort === "sales" ? (
-                  <span onClick={() => reSort("createdAt")}>Newest</span>
+                  <span className='hover:text-[#1DBF73] cursor-pointer' onClick={() => reSort("createdAt")}>Newest</span>
                 ) : (
-                  <span onClick={() => reSort("sales")}>Best Selling</span>
+                  <span className='hover:text-[#1DBF73] cursor-pointer' onClick={() => reSort("sales")}>Best Selling</span>
                 )}
-                <span onClick={() => reSort("sales")}>Popular</span> </div>
+                <span className='hover:text-[#1DBF73] cursor-pointer' onClick={() => reSort("sales")}>Popular</span> </div>
             )}
           </div>
         </div>

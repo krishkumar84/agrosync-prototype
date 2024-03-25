@@ -54,7 +54,8 @@ function Navbar() {
 
   const navigate = useNavigate()
   const handleSearch = () => {
-    navigate(`/posts?search=`)
+    //navigate(`/posts?search=`)
+    navigate(`/posts?search=${searchData}`)
   };
  
 
@@ -76,8 +77,8 @@ function Navbar() {
 
 
   return (
-    <animated.nav className="w-full fixed  px-0 sm:pr-4 flex justify-between items-center py-2 z-20" style={bgColorSpring}>
-      <div className="mr-2 ml-32 sm:ml-12  mt-2  w-[150px] sm:w-[500px]  ">
+    <animated.nav className="w-full fixed pl-4 sm:pl-0  px-0 sm:pr-4 flex justify-start sm:justify-end items-center py-2 z-20" style={bgColorSpring}>
+      <div className="mr-2 ml-32 sm:ml-12 items-center  mt-2  w-[150px] sm:w-[500px]  ">
         <Link to="/">
         <img src={AgroLogo} alt="AgroSync Logo" />
         </Link>
@@ -122,24 +123,26 @@ function Navbar() {
           className="cursor-pointer "
           title="Profile"
         >
+          <div className="flex flex-wrap items-center gap-2">
           <img
             onClick={() => setOpen(!Open)}
             src={currentUser.img || commonImageUrl}
             alt="Profile"
             width={40}
             height={40}
-            className="rounded-full "
+            className="rounded-full border-2 border-gray-400 cursor-pointer"
           />
-          <span>{currentUser?.username}</span>
+          <span className="font-medium text-xl text-gray-700  hover:text-green-600">{currentUser?.username}</span>
+          </div>
           {Open && <div className="absolute top-12 w-32 bg-white mt-3 flex flex-col p-4 gap-1.5 text-gray-700  cursor-pointe font-medium rounded-md">
             {currentUser?.isSeller && (
               <>
-             <Link onClick={() => setOpen(!Open)} to="/myposts"> <span>Post</span></Link>
-             <Link onClick={() => setOpen(!Open)} to="/addpost"> <span>Add New</span></Link>
+             <Link onClick={() => setOpen(!Open)} to="/myposts"> <span className="hover:text-[#1DBF73]">Post</span></Link>
+             <Link onClick={() => setOpen(!Open)} to="/addpost"> <span className="hover:text-[#1DBF73]">Add New</span></Link>
               </>
               )}
-              <Link onClick={() => setOpen(!Open)} to="/orders"> <span>Orders</span> </Link>
-              <Link  onClick={handleLogout}> <span>logout</span> </Link>
+              <Link onClick={() => setOpen(!Open)} to="/orders"> <span className="hover:text-[#1DBF73]">Orders</span> </Link>
+              <Link  onClick={handleLogout}> <span className="hover:text-[#1DBF73]">logout</span> </Link>
           </div>}
           </li>}
           </div>

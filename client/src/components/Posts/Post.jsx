@@ -23,8 +23,10 @@ function Post({ item }) {
   return (
     <Link  to={`/post/${item._id}`}>
       <div className="sm:w-64 w-full  rounded-sm  border-2 mb-6">
-        <img className="w-full h-1/2 rounded-md bg-cover" src={item.cover} alt="" />
-        <div className="flex flex-col gap-2 pt-2 ">
+      <div className="w-full h-52 rounded-md overflow-hidden">
+        <img className="w-full h-full object-cover" src={item.cover} alt="" />
+    </div>
+    <div className="flex flex-col gap-2 pt-2 ">
           {isLoading ? ("Loading") : error ? ("something went wrong") :( <div className="flex items-center gap-4">
             <img className="w-6 h-6 ml-1.5  rounded-full" src={data.img || pfp} alt="" />
             <span>{data.username}</span>
@@ -41,7 +43,7 @@ function Post({ item }) {
           <img className="w-[25px] h-[25px] ml-3 cursor-pointer" src={like} alt="" />
           <div className="flex items-center justify-between px-3 flex-col">
           <span className='text-gray-500 font-medium '>Starting At</span>
-          <h2 className='text-gray-600  text-xl '>${item.price}</h2>
+          <h2 className='text-gray-600  text-xl '>₹{item.price} /Kg</h2>
           </div>
         </div>
       </div>

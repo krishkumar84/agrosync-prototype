@@ -25,12 +25,15 @@ function HomeBanner() {
   const navigate = useNavigate()
 
   const handleSubmit = ()=> {
- navigate(`/posts?search=`)
- //navigate(`/posts?search=${input}`)
+ //navigate(`/posts?search=`)
+ navigate(`/posts?search=${input}`)
    
   }
 
-  
+  const handleSearch = (searchTerm) => {
+    //navigate(`/posts?search=`)
+    navigate(`/posts?search=${searchTerm}`)
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -45,16 +48,16 @@ function HomeBanner() {
   }, []);
 
   return (
-    <div className="sm:h-[540px] h-[480px]   z-10 bg-green-600 sm:bg-white relative bg-cover">
-      <div className="absolute hidden sm:inline-block top-0 right-0 w-[100vw] transition-opacity z-0">
+    <div className="w-full pb-1 xl:pb-2 2xl:pb-64 z-10 bg-green-600 sm:bg-white bg-cover">
+      <div className="absolute hidden sm:inline-block top-0 h-auto 2xl:h-[400px]  w-full transition-opacity z-0">
         <img
           alt="hero"
           src={imageSources[imageIndex]}
-         className={`${fadeClass}`}
+         className={`h-[500px] md:h-[430px] lg:h-[450px] xl:h-[500px] 2xl:h-[700px] w-full ${fadeClass}`}
         />
       </div>
       
-      <div className="z-10 relative w-[400px] sm:w-[650px] flex pt-24 justify-center flex-col h-full gap-5 pl-12 sm:ml-4">
+      <div className="z-10 h-[500px] relative w-[400px] sm:w-[650px] flex pt-24  justify-center flex-col  gap-5 pl-12 sm:ml-4">
         <h1 className="text-white sm:text-5xl text-5xl leading-snug">
           Find the perfect&nbsp;
           <i>CROP</i>
@@ -82,19 +85,23 @@ function HomeBanner() {
         <div className="text-white hidden sm:flex  gap-4">
           Popular:
           <ul className="flex  gap-5">
-            <li className="text-sm py-1  px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-              Wheat
-            </li>
-            <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-              Rice
-            </li>
-            <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-              Maize
-            </li>
-            <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-              SugarCane
-            </li>
-          </ul>
+        <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
+            onClick={() => handleSearch('apple')}>
+            Apple
+        </li>
+        <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
+            onClick={() => handleSearch('corn')}>
+            Corn
+        </li>
+        <li className="text-sm py-1  px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
+            onClick={() => handleSearch('wheat')}>
+            Wheat
+        </li>
+        <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
+            onClick={() => handleSearch('rice')}>
+            Rice
+        </li>
+    </ul>
         </div>
       </div>
     </div>
