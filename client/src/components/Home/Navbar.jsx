@@ -33,7 +33,7 @@ function Navbar() {
 
     window.addEventListener('scroll', handleScroll);
 
-    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    // const storedUser = JSON.parse(localStorage.getItem("currentUser"));
 
 
     return () => {

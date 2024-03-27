@@ -53,7 +53,7 @@ function HomeBanner() {
         <img
           alt="hero"
           src={imageSources[imageIndex]}
-         className={`h-[500px] md:h-[430px] lg:h-[450px] xl:h-[500px] 2xl:h-[700px] w-full ${fadeClass}`}
+         className={`h-[500px] top-0 md:h-[430px] lg:h-[450px] xl:h-[500px] 2xl:h-[700px] w-full ${fadeClass}`}
         />
       </div>
       

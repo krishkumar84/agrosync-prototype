@@ -15,7 +15,7 @@ function Login() {
     e.preventDefault();
     try {
       const res = await newRequest.post("/auth/login", { username, password });
-      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      // localStorage.setItem("currentUser", JSON.stringify(res.data));
       login(res.data);
       toast.success("user loggedIn successfully");
       navigate("/");

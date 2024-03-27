@@ -9,6 +9,7 @@ import Orders from './components/Posts/Orders'
 import AddPost from './components/Posts/AddPost'
 import Login from './components/Login'
 import Register from './components/Register'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 import {
   createBrowserRouter,
@@ -89,7 +90,9 @@ const router = createBrowserRouter([
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
+      <SkeletonTheme baseColor="#D3D3D3" highlightColor="#C0C0C0">
         <RouterProvider router={router} />
+        </SkeletonTheme>
       </AuthProvider>
     </QueryClientProvider>
   );

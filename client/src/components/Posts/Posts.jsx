@@ -1,10 +1,12 @@
 import React, { useState,useEffect, useRef } from 'react';
 import arrow from '../assets/down-arrow.png';
-import {posts} from '../../utils/categories';
 import Post from './Post';
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useLocation } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import PostSkeleton from './PostSkeleton';
 
 function Posts() {
   const [open, setOpen] = useState(false);
@@ -79,10 +81,11 @@ function Posts() {
          {/* {posts.map(post => (
         <Post key={post.id} item={post} /> */}
         {isLoading
-  ? "loading"
+  ?  <PostSkeleton cards={12} />
   : error
   ? "Something went wrong!"
   : data && data.map((post) => <Post key={post._id} item={post} />)} 
+  {/* // : <PostSkeleton cards={12}/>}  */}
 
 </div>
 
