@@ -9,7 +9,7 @@ import Orders from './components/Posts/Orders'
 import AddPost from './components/Posts/AddPost'
 import Login from './components/Login'
 import Register from './components/Register'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 import {
   createBrowserRouter,
