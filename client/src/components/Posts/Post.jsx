@@ -22,7 +22,7 @@ function Post({ item }) {
 
   return (
     <Link  to={`/post/${item._id}`}>
-      <div className="sm:w-64 w-full  rounded-sm  border-2 mb-6">
+      <div className="sm:w-64 w-80  rounded-sm  border-2 mb-6">
       <div className="w-full h-52 rounded-md overflow-hidden">
         <img className="w-full h-full object-cover" src={item.cover} alt="" />
     </div>

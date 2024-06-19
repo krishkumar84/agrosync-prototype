@@ -77,7 +77,7 @@ function Posts() {
             )}
           </div>
         </div>
-        <div className=" items-center mt-12 justify-between flex flex-wrap ">
+        <div className=" items-center w-full mt-12 justify-between flex flex-wrap ">
          {/* {posts.map(post => (
         <Post key={post.id} item={post} /> */}
         {isLoading

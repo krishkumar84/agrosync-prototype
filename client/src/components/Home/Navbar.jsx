@@ -44,6 +44,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
+      localStorage.removeItem("currentUser");
       setOpen(false);
       toast.success("user logged out successfully");
       logout();
