@@ -8,6 +8,7 @@ import orderRoute from "./routes/order.route.js";
 import authRoute from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import limiter from "./utils/Ratelimiter.js";
 
 
 const app = express();
@@ -25,10 +26,10 @@ const connect = async () => {
   app.use(cors({ origin: ['http://localhost:5173', 'https://agrosync-prototype.vercel.app'], credentials: true }));
   app.use(express.json());
   app.use(cookieParser());
-
+  app.use( limiter)
   app.use("/api/auth", authRoute);
   app.use("/api/users", userRoute);
-   app.use("/api/posts", postRoute);
+  app.use("/api/posts", postRoute);
   app.use("/api/orders", orderRoute);
   app.use("/api/reviews", reviewRoute);
 
