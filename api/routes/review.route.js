@@ -5,11 +5,12 @@ import {
   getReviews,
   deleteReview,
 } from "../controllers/review.controller.js";
+import limiter from "../utils/Ratelimiter.js";
 
 const router = express.Router();
 
-router.post("/", verifyToken, createReview )
+router.post("/",limiter, verifyToken, createReview )
 router.get("/:postId", getReviews )
-router.delete("/:id", deleteReview)
+router.delete("/:id",limiter, deleteReview)
 
 export default router;

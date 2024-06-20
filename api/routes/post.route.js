@@ -7,11 +7,12 @@ import {
   getPostsByUserId,
 } from "../controllers/post.controller.js";
 import { verifyToken } from "../middleware/jwt.js";
+import limiter from "../utils/Ratelimiter.js";
 
 const router = express.Router();
 
-router.post("/", verifyToken, createPost);
-router.delete("/:id", verifyToken, deletePost);
+router.post("/",limiter, verifyToken, createPost);
+router.delete("/:id",limiter, verifyToken, deletePost);
 router.get("/single/:id", getPost);
 router.get("/", getPosts);
 router.get("/user/:userId", verifyToken, getPostsByUserId);
