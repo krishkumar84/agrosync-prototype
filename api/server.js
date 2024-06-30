@@ -43,9 +43,13 @@ app.get('/', (req, res) => {
   res.status(200).send('Server up and running')
 })
   
-const port = 3000; // Set the desired port number ;
+const port = process.env.PORT ||3000; // Set the desired port number ;
 
-app.listen(port, () => {
-    connect();
+const startServer = async () => {
+  await connect();
+  app.listen(port, () => {
     console.log(`Backend server is running on port ${port}!`);
-});
+  });
+};
+
+startServer();
