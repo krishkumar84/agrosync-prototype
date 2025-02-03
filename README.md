@@ -1,13 +1,13 @@
 # AgroSync
 
-AgroSync is a platform that bridges the gap between farmers and consumers by enabling direct transactions through a Node.js-powered platform. It includes features like crop listing, direct purchasing, secure transactions via Stripe, chat support, and crop quality grading using machine learning.
+AgroSync is a platform that bridges the gap between farmers and consumers by enabling direct transactions through a Node.js-powered platform. It includes features like crop listing, direct purchasing, secure transactions via Razorpay, chat support, and crop quality grading using machine learning.
 
 
 ## Features
 
 - **Farmer Crop Listings**: Farmers can list their crops with detailed information.
 - **Direct Purchases**: Consumers can directly purchase crops from farmers.
-- **Secure Transactions**: Integrated Stripe for secure and easy payments.
+- **Secure Transactions**: Integrated Razorpay for secure and easy payments.
 - **Chat Functionality**: Real-time chat between users and farmers.
 - **Chatbot**: Automated user support with a chatbot.
 - **Machine Learning for Crop Grading**: Ensures the quality of listed crops.
@@ -18,7 +18,7 @@ AgroSync is a platform that bridges the gap between farmers and consumers by ena
 - **Frontend**: React.js, React Query, Redux, Tailwind CSS, Framer, React Spring
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
-- **Payment Integration**: Stripe
+- **Payment Integration**: Razorpay
 - **Machine Learning**: Crop grading system to ensure product quality
 - **Real-Time Communication**: Chat functionality
 
